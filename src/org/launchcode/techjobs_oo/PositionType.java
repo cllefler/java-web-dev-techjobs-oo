@@ -28,11 +28,11 @@ public class PositionType {
     }
 
     @Override
-    public boolean equals(Object o) {  // Two objects are equal if they have the same id.
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PositionType)) return false;
-        PositionType position = (PositionType) o;
-        return getId() == position.getId();
+        PositionType positionType = (PositionType) o;
+        return getId() == positionType.getId();
     }
 
     @Override
