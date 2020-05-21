@@ -38,6 +38,29 @@ public class Job {
     }
 
     @Override
+    public String toString() {
+        String name = this.name;
+        String employer = this.employer.getValue();
+        String location = this.location.getValue();
+        String positionType = this.positionType.getValue();
+        String coreCompetency = this.coreCompetency.getValue();
+        if (this.name == "") {
+            name = "Data not available";
+        } else if (this.employer.getValue() == "") {
+            employer = "Data not available";
+        } else if (this.location.getValue() == "") {
+            location = "Data not available";
+        } else if (this.positionType.getValue() == "") {
+            positionType = "Data not available";
+        } else if (this.coreCompetency.getValue() == ""){
+            coreCompetency = "Data not available";
+        }
+
+            return "\n" + "ID: " + id + "\n" + "Name: " + name + "\n" + "Employer: " + employer + "\n" + "Location: " + location + "\n" + "Position Type: " + positionType + "\n" + "Core Competency: " + coreCompetency + "\n";
+        }
+
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Job)) return false;

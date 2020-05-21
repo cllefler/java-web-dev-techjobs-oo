@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class JobTest {
 
@@ -44,6 +43,35 @@ public class JobTest {
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertFalse(job1.getId() == job2.getId());
+    }
 
+    @Test
+    public void firstTestForToString() {
+        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("" + test_job + "", test_job.toString());
+    }
+
+    @Test
+    public void secondTestForToString() {
+        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("\nID: 3\n"+
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n", test_job.toString());
+    }
+    @Test
+    public void thirdTestForToString() {
+        Job test_job = new Job("Product tester", new Employer("ACME"), new Location(""),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("\nID: 3\n"+
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Data not available\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n", test_job.toString());
     }
 }
