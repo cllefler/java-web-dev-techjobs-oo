@@ -12,17 +12,11 @@ public class JobTest {
     Job test_job2;
     Job test_job;
 
-
-    @Before
-    public void createJobObjects() {
-        test_job1 = new Job();
-        test_job2 = new Job();
-        }
-
     @Test
     public void testSettingJobId() {
-        assertEquals(1, test_job1.getId(), .001);
-        assertEquals(2, test_job2.getId(), .001);
+        Job test_job1 = new Job();
+        Job test_job2 = new Job();
+        assertNotEquals(test_job1.getId(), test_job2.getId());
     }
 
     @Test
@@ -42,7 +36,7 @@ public class JobTest {
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertFalse(job1.getId() == job2.getId());
+        assertNotEquals(job1, job2);
     }
 
     @Test
@@ -56,18 +50,19 @@ public class JobTest {
     public void secondTestForToString() {
         Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals("\nID: 3\n"+
-                "Name: Product tester\n" +
-                "Employer: ACME\n" +
-                "Location: Desert\n" +
-                "Position Type: Quality control\n" +
-                "Core Competency: Persistence\n", test_job.toString());
+        assertEquals("\nID: " + test_job.getId() + "\n" +
+                "Name: " + test_job.getName() + "\n" +
+                "Employer: " + test_job.getEmployer() + "\n" +
+                "Location: " + test_job.getLocation() + "\n" +
+                "Position Type: " + test_job.getPositionType() + "\n" +
+                "Core Competency: " + test_job.getCoreCompetency() + "\n", test_job.toString());
     }
+
     @Test
     public void thirdTestForToString() {
         Job test_job = new Job("Product tester", new Employer("ACME"), new Location(""),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals("\nID: 3\n"+
+        assertEquals("\nID: " + test_job.getId() + "\n" +
                 "Name: Product tester\n" +
                 "Employer: ACME\n" +
                 "Location: Data not available\n" +
